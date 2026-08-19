@@ -582,7 +582,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:6px 22px}
           </div>
           <div class="f">
             <label for="correo">Correo electrónico</label>
-            <input id="correo" name="Correo" type="email" autocomplete="email" required aria-describedby="err">
+            <input id="correo" name="email" type="email" autocomplete="email" required aria-describedby="err">
           </div>
           <div class="f">
             <label for="zona">Zona de Madrid donde entrenaremos</label>
@@ -670,7 +670,7 @@ const CONFIG = {
   // Requiere activarlo UNA vez: envía el formulario desde la web publicada y confirma el enlace que llegue a tu correo.
   // El alias ya está puesto: las solicitudes llegan a tu correo sin que aparezca en el código.
   formEndpoint: 'https://formsubmit.co/ajax/0b783de6209d0ed9ada863e92a788b5d',   // alias de FormSubmit: no expone tu correo
-  autorespuesta: true,                  // acuse de recibo automático al cliente. Ponlo en false para desactivarlo.
+  autorespuesta: false,                 // acuse de recibo automático al cliente: SOLO funciona en el plan de pago de FormSubmit (probado el 19/08/2026: en el plan gratuito se ignora). El cliente ya ve la confirmación en pantalla al enviar.
   pagoURL: '',                          // OPCIONAL: enlace de pago (Stripe Payment Link, SumUp, PayPal…). Vacío = el pago se coordina tras la solicitud.
   precios: { evaluacion: 90, sesion: 80, bono5: 375, bono10: 700 },   // € IVA incluido — se muestran automáticamente en toda la página
   respuestaHoras: 24,
@@ -722,10 +722,10 @@ form.addEventListener('submit', async (e) => {
   form.classList.toggle('invalid', !!primero);
   if (primero) { primero.focus(); return; }
 
-  const datos = { Nombre: v('nombre'), Movil: v('movil'), Correo: v('correo'), Zona: v('zona'), Observaciones: v('obs') };
+  const datos = { Nombre: v('nombre'), Movil: v('movil'), email: v('correo'), Zona: v('zona'), Observaciones: v('obs') };
   const msg = [
     'Hola Josnier, quiero solicitar la Sesión de Evaluación y Bienvenida (' + CONFIG.precios.evaluacion + ' €).',
-    'Nombre: ' + datos.Nombre, 'Móvil: ' + datos.Movil, 'Correo: ' + datos.Correo, 'Zona: ' + datos.Zona,
+    'Nombre: ' + datos.Nombre, 'Móvil: ' + datos.Movil, 'Correo: ' + datos.email, 'Zona: ' + datos.Zona,
     datos.Observaciones ? 'Observaciones: ' + datos.Observaciones : '',
     CONFIG.pagoURL ? 'Pago: realizado / en curso desde la web.' : ''
   ].filter(Boolean).join('\n');
@@ -740,7 +740,7 @@ form.addEventListener('submit', async (e) => {
       const cuerpo = {
         ...datos,
         _subject: 'Solicitud · Sesión de Evaluación · ' + datos.Zona + ' · ' + datos.Nombre,
-        _replyto: datos.Correo,
+        _replyto: datos.email,
         _template: 'table',
         _captcha: 'false'
       };
@@ -757,7 +757,7 @@ form.addEventListener('submit', async (e) => {
   if (CONFIG.pagoURL) {
     let pagoURL = CONFIG.pagoURL;
     if (/^https:\/\/buy\.stripe\.com\//.test(pagoURL)) {
-      pagoURL += (pagoURL.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(datos.Correo) + '&client_reference_id=' + encodeURIComponent((datos.Nombre + ' | ' + datos.Movil + ' | ' + datos.Zona).slice(0, 200));
+      pagoURL += (pagoURL.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(datos.email) + '&client_reference_id=' + encodeURIComponent((datos.Nombre + ' | ' + datos.Movil + ' | ' + datos.Zona).slice(0, 200));
     }
     const win = window.open(pagoURL, '_blank', 'noopener');
     mostrarEstado('Un último paso: el pago seguro.',
