@@ -668,8 +668,8 @@ const CONFIG = {
   domicilio: '',                        // domicilio a efectos legales (aparece en el aviso legal si se rellena)
   // Endpoint que recibe las solicitudes por correo (FormSubmit).
   // Requiere activarlo UNA vez: envía el formulario desde la web publicada y confirma el enlace que llegue a tu correo.
-  // Después puedes sustituirlo por el alias que te dé FormSubmit (https://formsubmit.co/ajax/TU-ALIAS) para no exponer el correo.
-  formEndpoint: 'https://formsubmit.co/ajax/josnier.azuaje@gmail.com',
+  // El alias ya está puesto: las solicitudes llegan a tu correo sin que aparezca en el código.
+  formEndpoint: 'https://formsubmit.co/ajax/0b783de6209d0ed9ada863e92a788b5d',   // alias de FormSubmit: no expone tu correo
   autorespuesta: true,                  // acuse de recibo automático al cliente. Ponlo en false para desactivarlo.
   pagoURL: '',                          // OPCIONAL: enlace de pago (Stripe Payment Link, SumUp, PayPal…). Vacío = el pago se coordina tras la solicitud.
   precios: { evaluacion: 90, sesion: 80, bono5: 375, bono10: 700 },   // € IVA incluido — se muestran automáticamente en toda la página
