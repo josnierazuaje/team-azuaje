@@ -199,6 +199,38 @@ figure.diag{margin:44px 0 12px;padding:28px;background:var(--grafito);display:gr
 .proceso-linea{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;color:var(--piedra);margin-top:26px}
 .proceso-linea b{color:var(--rojo);font-weight:500;padding:0 6px}
 
+/* tarifa fundador */
+.fundador{margin:40px 0 0;max-width:70ch;font-size:16.5px;line-height:1.62;color:var(--marfil-2);border-left:1px solid var(--rojo);padding-left:26px}
+.fundador .lab{display:block;margin-bottom:12px}
+.fundador .lab::before{display:none}
+.fundador b{color:var(--marfil);font-weight:500}
+
+/* plan semanal */
+.plan{margin-top:40px;background:var(--negro);border-top:1px solid var(--rojo);padding:40px 40px 44px}
+.plan > .lab{color:var(--rojo);margin-bottom:16px}
+.plan > .lab::before{background:var(--rojo)}
+.plan h3{font-size:clamp(28px,3.2vw,40px);font-weight:300;margin-bottom:16px;max-width:22ch}
+.plan .entradilla{color:var(--marfil-2);max-width:64ch;font-size:16.5px;margin-bottom:34px}
+.plan-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start}
+.plan-grid .lista li{font-size:15.5px;line-height:1.55}
+.plan-precio{border-left:1px solid var(--linea);padding-left:clamp(22px,3vw,36px)}
+.plan-precio .cifra{font-family:"Cormorant Garamond",serif;font-size:66px;font-weight:300;line-height:1;margin:0 0 10px}
+.plan-precio .cifra small{font-size:16px;color:var(--piedra);font-family:"Manrope",sans-serif;margin-left:10px}
+.plan-precio .l{font-size:14.5px;color:var(--piedra);margin:0 0 12px;max-width:34ch}
+.plan-precio .l b{color:var(--marfil)}
+.plan-precio .btn{width:100%;margin-top:8px;text-align:center}
+@media (max-width:820px){.plan{padding:30px 24px 34px}.plan-grid{grid-template-columns:1fr}.plan-precio{border-left:0;border-top:1px solid var(--linea);padding-left:0;padding-top:26px}}
+
+/* otros formatos */
+.otros{margin-top:52px}
+.otros-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.otros-grid > div{border-top:1px solid var(--linea);padding-top:20px}
+.otros-grid b{display:block;font-family:"Cormorant Garamond",serif;font-weight:400;font-size:25px;margin-bottom:6px}
+.otros-grid .pr{display:block;font-family:"Cormorant Garamond",serif;font-size:38px;font-weight:300;color:var(--marfil);margin-bottom:10px}
+.otros-grid p{font-size:14.5px;color:var(--piedra);margin:0;line-height:1.5}
+.otros-grid i{color:var(--marfil-2);font-style:normal}
+@media (max-width:760px){.otros-grid{grid-template-columns:1fr;gap:26px}}
+
 /* pasos */
 .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:48px}
 .paso .num{display:block;margin-bottom:12px}
@@ -310,7 +342,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:6px 22px}
     <p class="lead">Entrenamiento técnico individual en tu domicilio o en tu gimnasio privado. Un método diseñado sobre tu biotipo, una agenda que se adapta a la tuya y una discreción que no necesita explicarse.</p>
     <div>
       <a class="btn" href="#reservar">Reservar mi Sesión de Evaluación</a>
-      <p class="micro"><b><span data-precio="evaluacion">90</span> €</b> · 60 minutos en tu domicilio · Evaluación biomecánica, vendaje profesional y plan a medida incluidos · Sin permanencia</p>
+      <p class="micro"><b>Tarifa Fundador · <span data-precio="evaluacion">60</span> €</b> · 60 minutos en tu domicilio · Evaluación biomecánica, vendaje profesional y plan a medida incluidos · <span data-dato="plazas">6</span> plazas hasta el <span data-dato="fechaLimite">31 de octubre</span></p>
     </div>
   </div>
   <div class="hero-photo">
@@ -449,24 +481,54 @@ footer .legal{display:flex;flex-wrap:wrap;gap:6px 22px}
       <div class="it rev"><div class="k"><span class="num">04</span><span class="lab">Plan de entrenamiento a medida</span></div><p>Tras la sesión, recibes un documento con tu diagnóstico, tus objetivos técnicos y la propuesta de trabajo para las próximas semanas. Redactado en un lenguaje claro, sin jerga. Es tuyo, sigas entrenando conmigo o no.</p></div>
     </div>
 
-    <p class="anclaje rev">Una <strong>evaluación biomecánica individual</strong>, un <strong>vendaje realizado como a un boxeador profesional</strong> antes de subir al cuadrilátero y un <strong>plan de entrenamiento redactado para ti</strong> son servicios que en el alto rendimiento se contratan por separado y con profesionales distintos. Aquí los recibes juntos, en tu casa, en una única cita. Es lo que separa entrenar de entrenar con criterio. Lo que reservas no es una clase: es un diagnóstico y una hoja de ruta.</p>
+    <p class="anclaje rev">Una <strong>evaluación biomecánica individual</strong>, el <strong>vendaje que se le hace a un boxeador</strong> en el vestuario antes de subir al cuadrilátero y un <strong>plan de entrenamiento escrito después de verte mover</strong> son tres trabajos que en el alto rendimiento se contratan por separado y con profesionales distintos. Aquí los recibes juntos, en tu casa, en una sola cita, y el plan queda en tus manos aunque decidas no continuar. Después, cada sesión llega con el desplazamiento hecho, el material puesto y la corrección constante de alguien que esa hora solo te está mirando a ti: entreno a una persona por hora y no tengo intención de cambiar eso. En Madrid ese trabajo suele moverse entre 60 y 80 € la hora. <strong>Mis sesiones entran por debajo de esa horquilla a propósito y durante un tiempo definido</strong>, porque acabo de llegar a esta ciudad y quiero elegir bien a los primeros. Es una decisión de calendario, no de calidad.</p>
+
+    <p class="fundador rev"><span class="lab">Tarifa Fundador</span>Empiezo a entrenar en Madrid en septiembre y abro mi agenda desde cero. Durante estos primeros meses entreno por debajo de mi tarifa habitual, y lo hago a propósito y durante un tiempo definido: prefiero construir mi reputación aquí con <b><span data-dato="plazas">6</span> clientes</b> que entrenen bien, no con una tarifa que me dé la razón antes de haberla ganado. <b><span data-dato="plazas">6</span> plazas, hasta el <span data-dato="fechaLimite">31 de octubre</span> — lo que ocurra antes.</b> Desde el <span data-dato="desdeCuando">1 de noviembre</span> la tarifa pública será de <span data-futuro="sesion">70</span> € la sesión y <span data-futuro="evaluacion">80</span> € la Sesión de Evaluación. Quien entre ahora conserva su precio mientras siga entrenando de forma continuada, también cuando la tarifa suba. No es lo que vale el servicio: es lo que cuesta entrar el primero.</p>
 
     <div class="precio rev" id="precio">
       <div>
         <p class="t">Sesión de Evaluación y Bienvenida</p>
         <p class="l">Entrenamiento técnico · Evaluación biomecánica · Vendaje profesional · Plan a medida</p>
         <p class="l">60 minutos · En tu domicilio o gimnasio privado · Madrid · Material incluido</p>
-        <p class="cifra"><span data-precio="evaluacion">90</span> €<small>IVA incluido</small></p>
-        <p class="proceso-linea">Solicitud <b>→</b> coordinación personal <b>→</b> sesión en tu casa <b>→</b> plan a medida en los días siguientes</p>
+        <p class="cifra"><span data-precio="evaluacion">60</span> €<small>IVA incluido</small></p>
+        <p class="proceso-linea">Solicitud <b>&rarr;</b> coordinación personal <b>&rarr;</b> sesión en tu casa <b>&rarr;</b> plan a medida en los días siguientes</p>
       </div>
       <div class="cta">
         <a class="btn" href="#reservar">Reservar mi Sesión de Evaluación</a>
-        <p class="micro" style="margin-top:0">Sin cargo hasta confirmar. Tras tu solicitud recibirás en menos de <b>24 horas</b> un breve cuestionario, una propuesta de fecha y hora y las indicaciones para el pago seguro. <b>Sin permanencia.</b></p>
-        <p class="micro" style="margin-top:0">La agenda de sesiones a domicilio es deliberadamente limitada. Si no hay disponibilidad en la fecha que prefieres, te propondré la más cercana.</p>
+        <p class="micro" style="margin-top:0">Todo el mundo empieza aquí: no programo a nadie sin haberle visto moverse. <b>Sin cargo hasta confirmar</b> — tras tu solicitud recibirás en menos de <b>24 horas</b> un breve cuestionario, una propuesta de fecha y hora y las indicaciones para el pago seguro.</p>
       </div>
     </div>
 
-    <p class="small muted rev" style="margin-top:34px;max-width:64ch">Después de la evaluación, si decides continuar: sesión individual <b style="color:var(--marfil)"><span data-precio="sesion">80</span> €</b> · programa de 5 sesiones <b style="color:var(--marfil)"><span data-precio="bono5">375</span> €</b> · programa de 10 sesiones <b style="color:var(--marfil)"><span data-precio="bono10">700</span> €</b>. Todos los precios con IVA incluido. Condiciones completas al confirmar la reserva.</p>
+    <!-- ---------- PLAN SEMANAL ---------- -->
+    <div class="plan rev" id="plan">
+      <span class="lab">El formato que recomiendo</span>
+      <h3>Tres por semana: donde la corrección deja de perderse.</h3>
+      <p class="entradilla">No es el formato más económico por casualidad: es el único en el que puedo programar un mes entero en lugar de una clase suelta, y por eso es el que quiero llenar primero.</p>
+      <div class="plan-grid">
+        <ul class="lista">
+          <li><b>Corrijo el error antes de que se convierta en tu forma de moverte.</b> Un hombro que sube, un pie que se cruza, una mano que baja al volver: con siete días entre sesiones, ese defecto se ha repetido cientos de veces sin supervisión. Con 48 horas, lo detengo cuando todavía es un fallo y no un hábito.</li>
+          <li><b>Un gesto nuevo se consolida por repetición espaciada, no por esfuerzo.</b> Con una sesión semanal, cada clase empieza recuperando lo que el cuerpo ya ha empezado a olvidar. Con tres, la corrección del lunes sigue viva el miércoles y se automatiza el viernes.</li>
+          <li><b>Tres franjas fijas reservadas para ti en mi semana.</b> Mismos días y mismas horas todo el mes: no compites por un hueco, el hueco ya es tuyo.</li>
+        </ul>
+        <div class="plan-precio">
+          <p class="cifra"><span data-precio="plan">480</span> €<small>al mes</small></p>
+          <p class="l">12 sesiones · <b><span data-porsesion="plan" data-sesiones="12">40</span> € por sesión</b></p>
+          <p class="l">Material, desplazamiento e IVA incluidos. Sin permanencia: se renueva mes a mes y se detiene avisando con 7 días de antelación.</p>
+          <a class="btn" href="#reservar">Reservar mi plaza semanal</a>
+          <p class="micro" style="margin-top:0">Toda plaza semanal empieza por la Sesión de Evaluación (<span data-precio="evaluacion">60</span> €). El plan se activa después, con tus horarios fijos ya reservados.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="otros rev">
+      <p class="lab" style="margin-bottom:22px">Después de la evaluación, decides cómo continuar</p>
+      <div class="otros-grid">
+        <div><b>Sesión individual</b><span class="pr"><span data-precio="sesion">50</span> €</span><p>Sin bono y sin compromiso de continuidad. Para agendas que cambian cada semana o para quien viaja y entrena cuando está en Madrid.</p></div>
+        <div><b>Programa de 5 sesiones</b><span class="pr"><span data-precio="bono5">235</span> €</span><p><i><span data-porsesion="bono5" data-sesiones="5">47</span> € por sesión.</i> El formato mínimo para corregir un gesto concreto y que aguante. Lo consumes al ritmo que te permita tu agenda.</p></div>
+        <div><b>Programa de 10 sesiones</b><span class="pr"><span data-precio="bono10">450</span> €</span><p><i><span data-porsesion="bono10" data-sesiones="10">45</span> € por sesión.</i> El recorrido completo de la base técnica, con seguimiento escrito y sin atarte a tres franjas fijas de mi agenda.</p></div>
+      </div>
+      <p class="small muted" style="margin-top:30px;max-width:70ch">Todos los precios incluyen IVA, material y desplazamiento dentro de las zonas atendidas. Sesiones de 60 minutos. Cancelación sin coste hasta 24 h antes: la sesión se recupera dentro del mismo mes si la agenda lo permite. Sin permanencia en ningún formato.</p>
+    </div>
   </div>
 </section>
 
@@ -528,7 +590,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:6px 22px}
       <div class="regla rev"><h3>Horarios</h3><p>Franjas pensadas para agendas exigentes: primera hora de la mañana, mediodía y tarde-noche. Los días y horarios concretos se acuerdan contigo al coordinar la primera sesión.</p></div>
       <div class="regla rev"><h3>Cancelaciones</h3><p>Puedes modificar o cancelar una sesión sin coste con al menos 24 horas de antelación. Con menos margen, la sesión se considera realizada, salvo causa de fuerza mayor. Es lo que permite mantener una agenda reducida y fiable para cada uno de mis clientes.</p></div>
       <div class="regla rev"><h3>Puntualidad</h3><p>Llego con antelación suficiente para preparar el espacio y el material. La sesión empieza a la hora acordada.</p></div>
-      <div class="regla rev"><h3>Sin permanencia</h3><p>Cada programa se acuerda por escrito antes de empezar. No hay cuotas, matrículas ni compromisos que no hayamos hablado. Todos los precios incluyen IVA.</p></div>
+      <div class="regla rev"><h3>Sin permanencia</h3><p>Cada programa se acuerda por escrito antes de empezar. No hay matrículas ni compromisos que no hayamos hablado. El Plan Semanal se renueva mes a mes y se detiene avisando con 7 días de antelación. Todos los precios incluyen IVA.</p></div>
     </div>
   </div>
 </section>
@@ -550,7 +612,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:6px 22px}
       <details><summary>¿A qué zonas de Madrid te desplazas?</summary><div class="a"><p>Con desplazamiento incluido: Salamanca, Chamberí, Chamartín, Retiro, Moncloa-Aravaca, La Moraleja, Pozuelo y Somosaguas, Majadahonda, Las Rozas y Boadilla. Para localizaciones fuera de ese perímetro, escríbeme antes de reservar y valoramos disponibilidad y condiciones.</p></div></details>
       <details><summary>¿Cuál es la política de cancelaciones?</summary><div class="a"><p>Puedes cambiar o cancelar sin coste con al menos 24 horas de antelación. Con menos margen, la sesión se da por realizada, salvo causa de fuerza mayor. Es la única manera de mantener una agenda reducida y fiable para todos mis clientes. Recibirás las condiciones completas al confirmar la reserva.</p></div></details>
       <details><summary>¿Puede gestionar la reserva mi asistente?</summary><div class="a"><p>Por supuesto. Tras la solicitud, coordino directamente con la persona que me indiques: fechas, horarios, accesos y cualquier detalle logístico.</p></div></details>
-      <details><summary>¿Qué ocurre después de la Sesión de Evaluación? ¿Cuánto cuesta continuar?</summary><div class="a"><p>Recibes tu plan a medida en los días siguientes. Con él en la mano, decides si quieres continuar. Si es así, te propongo un programa adaptado a tu frecuencia y objetivos: sesión individual <span data-precio="sesion">80</span> €, programa de 5 sesiones <span data-precio="bono5">375</span> € o programa de 10 sesiones <span data-precio="bono10">700</span> € (IVA incluido en todos los casos), con condiciones detalladas por escrito antes de que tomes cualquier decisión. Si decides no continuar, el plan sigue siendo tuyo. Sin permanencia.</p></div></details>
+      <details><summary>¿Cuánto cuesta y qué pasa cuando suba la tarifa?</summary><div class="a"><p>Hoy: <span data-precio="evaluacion">60</span> € la Sesión de Evaluación y Bienvenida, <span data-precio="sesion">50</span> € la sesión suelta, <span data-precio="bono5">235</span> € el programa de 5 sesiones, <span data-precio="bono10">450</span> € el de 10 y <span data-precio="plan">480</span> € al mes el Plan Semanal de tres sesiones por semana. Todo con material, desplazamiento e IVA incluidos.</p><p>Son precios de apertura, no mi tarifa. Abro <span data-dato="plazas">6</span> plazas de Tarifa Fundador: si las seis fueran de Plan Semanal serían dieciocho sesiones a la semana, y ahí se acaba mi calendario entrenando a una persona por hora y cruzando Madrid entre una casa y otra. Cuando esas plazas estén cubiertas, o a partir del <span data-dato="fechaLimite">31 de octubre</span> —lo que ocurra antes—, la tarifa pasa a su nivel ordinario: <span data-futuro="sesion">70</span> € por sesión y <span data-futuro="evaluacion">80</span> € la evaluación.</p><p>Si entras ahora, tu precio no cambia. Se congela para todos los formatos y puedes moverte entre ellos —de sesión suelta a bono, de bono a Plan Semanal y al revés— siempre con tu precio de fundador, aunque la tarifa pública suba varias veces. Solo se recalcula si dejas de entrenar más de tres meses seguidos y vuelves después; en ese caso te lo digo antes de reservar, nunca en la factura. Las pausas acordadas por viaje, lesión o trabajo no cuentan como interrupción.</p><p>Sin permanencia y sin cuota de socio: solo se paga lo que se entrena. Quien me ayuda a empezar en esta ciudad no paga después el precio de que me vaya bien.</p></div></details>
       <details><summary>¿Puedo regalar la Sesión de Evaluación a otra persona?</summary><div class="a"><p>Sí. Indícalo en las observaciones de la solicitud y te enviaré una confirmación a nombre de la persona destinataria, con la que coordinaré fecha, hora y lugar directamente y con la misma discreción.</p></div></details>
     </div>
   </div>
@@ -564,7 +626,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:6px 22px}
         <span class="lab eyebrow">Reserva</span>
         <h2 id="h-reserva" class="rev">Empieza con una evaluación, no con una promesa.</h2>
         <p class="rev" style="color:var(--marfil-2);margin-top:26px">La técnica se aprende. La calma se entrena. La primera sesión te dará algo concreto: información precisa sobre cómo se mueve tu cuerpo, un vendaje realizado como en un combate profesional, sesenta minutos de técnica bien enseñada y un plan diseñado para ti. Una agenda limitada, un solo cliente por sesión y una forma de enseñar que respeta tu tiempo, tu espacio y tu cuerpo.</p>
-        <p class="micro rev"><b><span data-precio="evaluacion">90</span> €</b> IVA incluido · A domicilio en Madrid · Entrenamiento técnico, evaluación biomecánica, vendaje profesional y plan a medida · Sin cargo hasta confirmar</p>
+        <p class="micro rev"><b>Tarifa Fundador: <span data-precio="evaluacion">60</span> €</b> IVA incluido · A domicilio en Madrid · Entrenamiento técnico, evaluación biomecánica, vendaje profesional y plan a medida · Sin cargo hasta confirmar</p>
         <p class="micro rev" style="margin-top:8px">¿Prefieres hablar antes? Escríbeme a <a href="mailto:josnier.azuaje@gmail.com" data-mail>josnier.azuaje@gmail.com</a> o por <a href="https://wa.me/56964061816?text=Hola%20Josnier%2C%20he%20visto%20tu%20p%C3%A1gina%20de%20boxeo%20privado%20en%20Madrid%20y%20me%20gustar%C3%ADa%20hablar%20contigo." target="_blank" rel="noopener" data-wa-link>WhatsApp</a>.</p>
       </div>
       <div>
@@ -651,7 +713,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:6px 22px}
 </footer>
 
 <div class="flot" id="flot" aria-hidden="true" inert>
-  <span class="p"><span class="p-l">Sesión de </span>Evaluación · <b><span data-precio="evaluacion">90</span> €</b></span>
+  <span class="p"><span class="p-l">Tarifa Fundador · </span>Evaluación <b><span data-precio="evaluacion">60</span> €</b></span>
   <a class="btn" href="#reservar">Reservar Sesión de Evaluación</a>
 </div>
 
@@ -672,7 +734,14 @@ const CONFIG = {
   formEndpoint: 'https://formsubmit.co/ajax/0b783de6209d0ed9ada863e92a788b5d',   // alias de FormSubmit: no expone tu correo
   autorespuesta: false,                 // acuse de recibo automático al cliente: SOLO funciona en el plan de pago de FormSubmit (probado el 19/08/2026: en el plan gratuito se ignora). El cliente ya ve la confirmación en pantalla al enviar.
   pagoURL: '',                          // OPCIONAL: enlace de pago (Stripe Payment Link, SumUp, PayPal…). Vacío = el pago se coordina tras la solicitud.
-  precios: { evaluacion: 90, sesion: 80, bono5: 375, bono10: 700 },   // € IVA incluido — se muestran automáticamente en toda la página
+  // TARIFA FUNDADOR (apertura). Todo en € con IVA incluido; se propagan solos por la página.
+  precios: { evaluacion: 60, sesion: 50, bono5: 235, bono10: 450, plan: 480 },
+  // Tarifa ordinaria que entrará en vigor al terminar la apertura. Se muestra en la web como compromiso.
+  tarifaFutura: { evaluacion: 80, sesion: 70 },
+  // Límite de la tarifa de apertura. CONFÍRMALOS: son una promesa pública y hay que cumplirla.
+  plazas: 6,
+  fechaLimite: '31 de octubre',
+  desdeCuando: '1 de noviembre',
   respuestaHoras: 24,
 };
 
@@ -687,6 +756,9 @@ const CONFIG = {
 
 /* precios, año, contacto */
 document.querySelectorAll('[data-precio]').forEach(el => { const k = el.dataset.precio; if (CONFIG.precios[k] != null) el.textContent = CONFIG.precios[k]; });
+document.querySelectorAll('[data-futuro]').forEach(el => { const k = el.dataset.futuro; if (CONFIG.tarifaFutura[k] != null) el.textContent = CONFIG.tarifaFutura[k]; });
+document.querySelectorAll('[data-dato]').forEach(el => { const k = el.dataset.dato; if (CONFIG[k] != null) el.textContent = CONFIG[k]; });
+document.querySelectorAll('[data-porsesion]').forEach(el => { const k = el.dataset.porsesion, n = +el.dataset.sesiones; if (CONFIG.precios[k] != null && n) el.textContent = Math.round(CONFIG.precios[k] / n); });
 document.getElementById('anio').textContent = new Date().getFullYear();
 const waBase = 'https://wa.me/' + CONFIG.whatsapp;
 document.querySelectorAll('[data-wa-link]').forEach(a => { a.href = waBase + '?text=' + encodeURIComponent('Hola Josnier, he visto tu página de boxeo privado en Madrid y me gustaría hablar contigo.'); });
@@ -724,7 +796,7 @@ form.addEventListener('submit', async (e) => {
 
   const datos = { Nombre: v('nombre'), Movil: v('movil'), email: v('correo'), Zona: v('zona'), Observaciones: v('obs') };
   const msg = [
-    'Hola Josnier, quiero solicitar la Sesión de Evaluación y Bienvenida (' + CONFIG.precios.evaluacion + ' €).',
+    'Hola Josnier, quiero solicitar la Sesión de Evaluación y Bienvenida (' + CONFIG.precios.evaluacion + ' €, Tarifa Fundador).',
     'Nombre: ' + datos.Nombre, 'Móvil: ' + datos.Movil, 'Correo: ' + datos.email, 'Zona: ' + datos.Zona,
     datos.Observaciones ? 'Observaciones: ' + datos.Observaciones : '',
     CONFIG.pagoURL ? 'Pago: realizado / en curso desde la web.' : ''
